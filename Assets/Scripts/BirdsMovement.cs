@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class BirdsMovement : MonoBehaviour
 {
@@ -24,6 +25,11 @@ public class BirdsMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             Birdrigidbody2D.velocity = new Vector2(0f, JumpForce);
+        }
+
+        else if (Birdrigidbody2D.transform.position.y <= -20)
+        {
+            SceneManager.LoadScene("End");
         }
     }
     public void OnTriggerEnter2D(Collider2D collision)
